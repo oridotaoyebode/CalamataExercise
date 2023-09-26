@@ -1,15 +1,23 @@
+using CalamataExercise.Application.Common.Interfaces;
 using CalamataExercise.Application.Common.Models;
 using MediatR;
 
 namespace Microsoft.Extensions.DependencyInjection.Chat.Commands.Create;
 
-public record CreateChatCommand() : IRequest<ChatResponse>;
+public record CreateChatCommand() : IRequest<ValueTask>;
 
-public class CreateChatCommandHandler : IRequestHandler<CreateChatCommand, ChatResponse>
+public class CreateChatCommandHandler : IRequestHandler<CreateChatCommand, ValueTask>
 {
-    
-    public Task<ChatResponse> Handle(CreateChatCommand request, CancellationToken cancellationToken)
+    private readonly IChatService _chatService;
+
+    public CreateChatCommandHandler(IChatService chatService)
     {
-        return null;
+        _chatService = chatService;
+    }
+    public async Task<ValueTask> Handle(CreateChatCommand request, CancellationToken cancellationToken)
+    {
+        _chatService.InitiateChatRequest();
+
+        return ValueTask.CompletedTask;
     }
 }
