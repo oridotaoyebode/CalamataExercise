@@ -16,6 +16,8 @@ public static class ConfigureServices
 
         services.AddScoped<ICurrentUserService, CurrentUserService>();
 
+        services.AddSignalR();
+        
         services.AddHttpContextAccessor();
 
         services.AddHealthChecks()

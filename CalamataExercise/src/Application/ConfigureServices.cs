@@ -22,6 +22,7 @@ public static class ConfigureServices
         });
 
         services.AddSingleton<IChatService, ChatService>();
+        services.AddSingleton<IEventService, EventService>();
         
         return services;
     }

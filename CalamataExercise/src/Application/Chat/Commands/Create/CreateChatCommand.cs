@@ -16,7 +16,7 @@ public class CreateChatCommandHandler : IRequestHandler<CreateChatCommand, Value
     }
     public async Task<ValueTask> Handle(CreateChatCommand request, CancellationToken cancellationToken)
     {
-        _chatService.InitiateChatRequest();
+        await _chatService.InitiateChatRequest();
 
         return ValueTask.CompletedTask;
     }

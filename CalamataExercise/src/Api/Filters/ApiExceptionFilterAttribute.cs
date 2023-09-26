@@ -60,8 +60,10 @@ public class ApiExceptionFilterAttribute : ExceptionFilterAttribute
     {
         var details = new ValidationProblemDetails(context.ModelState)
         {
-            Type = "https://tools.ietf.org/html/rfc7231#section-6.5.1"
+            Type = "https://tools.ietf.org/html/rfc7231#section-6.5.1",
+            
         };
+        details.Errors.Add(new KeyValuePair<string, string[]>("Error", new string[] {context.Exception.Message}));
 
         context.Result = new BadRequestObjectResult(details);
 

@@ -47,10 +47,13 @@ public class TeamTests
             new JuniorAgent(),
             new JuniorAgent(),
             new JuniorAgent(),
-            new JuniorAgent()};
+            new JuniorAgent(),
+            new JuniorAgent()
+            
+        };
         
         var team = new Team(actual);
         
-        team.QueueSize().Should().Be(30);
+        team.QueueSize().Should().Be(36);
     }
 }

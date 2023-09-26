@@ -7,6 +7,7 @@ builder.Services.AddApplicationServices();
 builder.Services.AddInfrastructureServices(builder.Configuration);
 builder.Services.AddWebUIServices();
 
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -30,27 +31,21 @@ else
 }
 
 app.UseHealthChecks("/health");
-app.UseHttpsRedirection();
-app.UseStaticFiles();
-
+app.UseHttpsRedirection(); 
+app.UseOpenApi();
 app.UseSwaggerUi3(settings =>
 {
-    settings.Path = "/api";
-    settings.DocumentPath = "/api/specification.json";
+    settings.AdditionalSettings.Add("displayRequestDuration", true);
+
 });
 
 app.UseRouting();
 
 app.UseAuthentication();
-app.UseIdentityServer();
 app.UseAuthorization();
 
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller}/{action=Index}/{id?}");
-
-app.MapRazorPages();
-
-app.MapFallbackToFile("index.html");
-
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllers();
+});
 app.Run();
