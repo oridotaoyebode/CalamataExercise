@@ -37,7 +37,7 @@ public class AgentAssignerService : BackgroundService
             }
             else if (_overflowQueue.Any() && _overflowQueue.TryDequeue(out var chatSessionOverflow))
             {
-                _logger.LogInformation($"Chat has been dequeued ready to be assigned to an agent");
+                _logger.LogInformation($"Chat has been dequeued from overflow and ready to be assigned to an agent");
 
                 //Logic for assigning a chat to an agent. 
                 //This is where the chat session would be assigned to an agent and the agent would be notified.

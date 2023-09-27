@@ -6,7 +6,6 @@ namespace CalamataExercise.WebUI.Controllers;
 
 [ApiController]
 [ApiExceptionFilter]
-[Route("api/[controller]")]
 public abstract class ApiControllerBase : ControllerBase
 {
     private ISender? _mediator;

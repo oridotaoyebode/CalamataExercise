@@ -4,7 +4,7 @@ using MediatR;
 
 namespace Microsoft.Extensions.DependencyInjection.Chat.Commands.Create;
 
-public record CreateChatCommand() : IRequest<ValueTask>;
+public record CreateChatCommand(int Count) : IRequest<ValueTask>;
 
 public class CreateChatCommandHandler : IRequestHandler<CreateChatCommand, ValueTask>
 {
@@ -16,7 +16,11 @@ public class CreateChatCommandHandler : IRequestHandler<CreateChatCommand, Value
     }
     public async Task<ValueTask> Handle(CreateChatCommand request, CancellationToken cancellationToken)
     {
-        await _chatService.InitiateChatRequest();
+        for (int i = 0; i < request.Count; i++)
+        {
+            await _chatService.InitiateChatRequest();
+
+        }
 
         return ValueTask.CompletedTask;
     }

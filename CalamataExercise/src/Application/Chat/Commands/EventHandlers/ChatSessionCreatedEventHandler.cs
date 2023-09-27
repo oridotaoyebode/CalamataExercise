@@ -19,7 +19,7 @@ public class ChatSessionCreatedEventHandler : INotificationHandler<EventNotifica
     }
     public async Task Handle(EventNotification<ChatSessionCreatedEvent> notification, CancellationToken cancellationToken)
     {
-        if (_mainQueue.Count <= TeamHelper.CreateDefaultTeamA().QueueSize())
+        if (_mainQueue.Count < TeamHelper.CreateDefaultTeamA().QueueSize())
         {
             //Agents are available to take the chat
             _mainQueue.Enqueue(notification.Event.ChatSession);

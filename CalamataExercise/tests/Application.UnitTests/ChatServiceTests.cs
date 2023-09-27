@@ -20,6 +20,8 @@ public class ChatServiceTests
         var chatService = new ChatService(mockDateTime.Object, mockEventService.Object);
 
         await chatService.InitiateChatRequest();
+        
+        mockEventService.Verify(x=> x.Publish(It.IsAny<BaseEvent>()), Times.AtMostOnce);
     }
     
     [Test]
