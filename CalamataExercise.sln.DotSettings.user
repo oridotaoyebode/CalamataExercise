@@ -1,4 +1,4 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=b5237740_002D563d_002D4620_002Db381_002Dd73f421dcb12/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="JuniorAgentConcurrentChatsReturnsCorrectValue" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
-  &lt;Project Location="/Users/oyebodeoridota/RiderProjects/CalamataExercise/CalamataExercise/tests/Application.UnitTests" Presentation="&amp;lt;Application.UnitTests&amp;gt;" /&gt;
+  &lt;Solution /&gt;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
