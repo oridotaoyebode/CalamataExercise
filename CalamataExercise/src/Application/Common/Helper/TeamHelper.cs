@@ -5,32 +5,20 @@ namespace Microsoft.Extensions.DependencyInjection.Common.Helper;
 
 public static class TeamHelper
 {
+    private static List<IAgent> _agents;
+
+    static TeamHelper()
+    {
+        _agents = new List<IAgent>
+        {
+            new TeamLeadAgent(), new MidLevelAgent(), new MidLevelAgent(), new JuniorAgent()
+        };
+    }
     public static Team CreateDefaultTeamA()
     {
-        var agents = new List<IAgent>
-        {
-                new TeamLeadAgent(), new MidLevelAgent(), new MidLevelAgent(), new JuniorAgent()
-            };
-        return new Team(agents);
+        return new Team(_agents);
     }
     
-    public static Team CreateDefaultTeamB()
-    {
-        var agents = new List<IAgent>
-        {
-            new SeniorAgent(), new MidLevelAgent(), new JuniorAgent(), new JuniorAgent()
-        };
-        return new Team(agents);
-    }
-    
-    public static Team CreateDefaultTeamC()
-    {
-        var agents = new List<IAgent>
-        {
-            new MidLevelAgent(), new MidLevelAgent()
-        };
-        return new Team(agents);
-    }
     
     public static Team CreateDefaultOverflowTeam()
     {

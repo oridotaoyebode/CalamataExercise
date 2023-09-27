@@ -11,7 +11,7 @@ public class TeamLeadAgentTests
     {
         var teamLeadAgent = new TeamLeadAgent();
 
-        var actual = teamLeadAgent.ConcurrentChats();
+        var actual = teamLeadAgent.MaxConcurrentChats();
 
         actual.Should().Be(5);
     }

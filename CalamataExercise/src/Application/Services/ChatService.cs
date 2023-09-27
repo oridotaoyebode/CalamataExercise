@@ -24,8 +24,7 @@ public class ChatService : IChatService
         {
             var chatSession = new ChatSession(
                 Guid.NewGuid(), 
-                DateTimeOffset.Now, 
-                TeamHelper.CreateDefaultTeamA());
+                _dateTime.Now);
             
             await AddSupportRequestToQueue(chatSession);
             

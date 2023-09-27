@@ -11,7 +11,7 @@ public class MidLevelAgentTests
     {
         var midLevelAgent = new MidLevelAgent();
 
-        var actual = midLevelAgent.ConcurrentChats();
+        var actual = midLevelAgent.MaxConcurrentChats();
 
         actual.Should().Be(6);
     }

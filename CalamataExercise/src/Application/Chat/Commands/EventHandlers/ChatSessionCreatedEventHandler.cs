@@ -10,23 +10,26 @@ namespace Microsoft.Extensions.DependencyInjection.Chat.Commands.EventHandlers;
 
 public class ChatSessionCreatedEventHandler : INotificationHandler<EventNotification<ChatSessionCreatedEvent>>
 {
-    private readonly Queue<ChatSession> _queue;
-
+    private readonly SingletonConcurrentQueue<ChatSession> _mainQueue;
+    private readonly SingletonConcurrentQueue<ChatSession> _overFlowQueue;
     public ChatSessionCreatedEventHandler()
     {
-        _queue = new Queue<ChatSession>();
+        _mainQueue = SingletonConcurrentQueue<ChatSession>.MainQueue;
+        _overFlowQueue = SingletonConcurrentQueue<ChatSession>.OverFlowQueue;
     }
     public async Task Handle(EventNotification<ChatSessionCreatedEvent> notification, CancellationToken cancellationToken)
     {
-        if (_queue.Count <= notification.Event.ChatSession.Team.QueueSize())
+        if (_mainQueue.Count <= TeamHelper.CreateDefaultTeamA().QueueSize())
         {
-            _queue.Enqueue(notification.Event.ChatSession);
+            //Agents are available to take the chat
+            _mainQueue.Enqueue(notification.Event.ChatSession);
         }
         else
         {
-            if (_queue.Count <= TeamHelper.CreateDefaultOverflowTeam().QueueSize())
+            //Agents are busy, check if there is space in the overflow team
+            if (_overFlowQueue.Count < TeamHelper.CreateDefaultOverflowTeam().QueueSize())
             {
-                _queue.Enqueue(notification.Event.ChatSession);
+                _overFlowQueue.Enqueue(notification.Event.ChatSession);
             }
             else
             {

@@ -4,9 +4,29 @@ namespace CalamataExercise.Application.Common.Models;
 
 public class TeamLeadAgent : IAgent
 {
-    public double Multiplier => 0.5;
-    public double ConcurrentChats()
+    public TeamLeadAgent()
     {
-        return IAgent.MaxConcurrency * Multiplier;
+        Id = Guid.NewGuid();
+    }
+
+    public override string ToString()
+    {
+        return nameof(TeamLeadAgent);
+    }
+
+    public Guid Id { get; }
+    
+    public int Priority => 4;
+
+    public int CurrentChats { get; set; }
+    public double Multiplier => 0.5;
+    
+    public bool IsAvailable => CurrentChats < MaxConcurrentChats();
+
+    
+    public int MaxConcurrentChats()
+    {
+        return (int)(IAgent.MaxConcurrency * Multiplier);
+
     }
 }

@@ -11,7 +11,7 @@ public class SeniorAgentTests
     {
         var seniorAgent = new SeniorAgent();
 
-        var actual = seniorAgent.ConcurrentChats();
+        var actual = seniorAgent.MaxConcurrentChats();
 
         actual.Should().Be(8);
     }

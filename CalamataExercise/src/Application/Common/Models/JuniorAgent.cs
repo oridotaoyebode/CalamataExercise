@@ -4,9 +4,25 @@ namespace CalamataExercise.Application.Common.Models;
 
 public class JuniorAgent : IAgent
 {
-    public double Multiplier => 0.4;
-    public double ConcurrentChats()
+    public JuniorAgent()
     {
-        return IAgent.MaxConcurrency * Multiplier;
+        Id = Guid.NewGuid();
+    }
+    
+    public override string ToString()
+    {
+        return nameof(JuniorAgent);
+    }
+    public Guid Id { get; }
+    public int Priority => 1;
+
+    public int CurrentChats { get; set; }
+    public double Multiplier => 0.4;
+    
+    public bool IsAvailable => CurrentChats < MaxConcurrentChats();
+
+    public int MaxConcurrentChats()
+    {
+        return (int)(IAgent.MaxConcurrency * Multiplier);
     }
 }

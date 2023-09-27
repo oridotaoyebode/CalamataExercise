@@ -1,4 +1,5 @@
 using CalamataExercise.Infrastructure.Persistence;
+using Microsoft.Extensions.DependencyInjection.Background;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -6,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddApplicationServices();
 builder.Services.AddInfrastructureServices(builder.Configuration);
 builder.Services.AddWebUIServices();
-
+builder.Services.AddHostedService<AgentAssignerService>();
 
 var app = builder.Build();
 

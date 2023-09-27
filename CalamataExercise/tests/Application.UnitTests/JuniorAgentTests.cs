@@ -12,7 +12,7 @@ public class JuniorAgentTests
     {
         var juniorAgent = new JuniorAgent();
 
-        var actual = juniorAgent.ConcurrentChats();
+        var actual = juniorAgent.MaxConcurrentChats();
 
         actual.Should().Be(4);
     }

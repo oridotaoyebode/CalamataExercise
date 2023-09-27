@@ -15,7 +15,7 @@ public class Team : ITeam
         if (Agents.Any())
         {
             //Cast to integer to round down
-            return (int)(Agents.Sum(agent => agent.ConcurrentChats()) * ITeam.TeamMultiplier);
+            return (int)(Agents.Sum(agent => agent.MaxConcurrentChats()) * ITeam.TeamMultiplier);
         }
 
         return 0;

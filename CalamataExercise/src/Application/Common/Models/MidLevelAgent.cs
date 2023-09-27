@@ -4,9 +4,27 @@ namespace CalamataExercise.Application.Common.Models;
 
 public class MidLevelAgent : IAgent
 {
-    public double Multiplier => 0.6;
-    public double ConcurrentChats()
+    public MidLevelAgent()
     {
-        return IAgent.MaxConcurrency * Multiplier;
+        Id = Guid.NewGuid();
+    }
+    
+    public override string ToString()
+    {
+        return nameof(MidLevelAgent);
+    }
+
+    public Guid Id { get; }
+    
+    public int Priority => 2;
+
+    public int CurrentChats { get; set; }
+    public double Multiplier => 0.6;
+    
+    public bool IsAvailable => CurrentChats < MaxConcurrentChats();
+
+    public int MaxConcurrentChats()
+    {
+        return (int)(IAgent.MaxConcurrency * Multiplier);
     }
 }

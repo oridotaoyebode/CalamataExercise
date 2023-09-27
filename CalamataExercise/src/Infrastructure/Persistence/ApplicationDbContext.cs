@@ -1,6 +1,5 @@
 ﻿using System.Reflection;
 using CalamataExercise.Application.Common.Interfaces;
-using CalamataExercise.Domain.Entities;
 using CalamataExercise.Infrastructure.Identity;
 using CalamataExercise.Infrastructure.Persistence.Interceptors;
 using Duende.IdentityServer.EntityFramework.Options;
@@ -26,10 +25,7 @@ public class ApplicationDbContext : ApiAuthorizationDbContext<ApplicationUser>, 
         _mediator = mediator;
         _auditableEntitySaveChangesInterceptor = auditableEntitySaveChangesInterceptor;
     }
-
-    public DbSet<TodoList> TodoLists => Set<TodoList>();
-
-    public DbSet<TodoItem> TodoItems => Set<TodoItem>();
+    
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
