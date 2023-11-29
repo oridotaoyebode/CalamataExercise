@@ -44,9 +44,7 @@ public class AgentAssignerService : BackgroundService
                 var agents = TeamHelper.CreateDefaultOverflowTeam().Agents;
                 AssignAgent(agents, chatSessionOverflow);
             }
-            
         }
-        
     }
 
    
@@ -61,7 +59,7 @@ public class AgentAssignerService : BackgroundService
                 .First();
 
             chatSession.SetAgent(nextAgent);
-            _logger.LogInformation("Chat session has been assigned to agent {S} : {NextAgentId}", nextAgent.ToString(), nextAgent.Id);
+            _logger.LogInformation("Chat session has been assigned to agent {NextAgent} : {NextAgentId}", nextAgent.ToString(), nextAgent.Id);
         }
         else
         {
