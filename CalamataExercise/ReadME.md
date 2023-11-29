@@ -11,9 +11,7 @@ Welcome to the Chat Project! This project aims to create a simple and efficient 
 3. [Dependencies](#dependencies)
 4. [Installation](#installation)
 5. [Usage](#usage)
-6. [Configuration](#configuration)
-7. [Contributing](#contributing)
-8. [License](#license)
+6. [License](#license)
 
 ## Getting Started
 
